@@ -1,0 +1,930 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="b.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Dream Decor | Premium Event Decoration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+    
+    <style>
+        /* Common Styles that will be used across all pages */
+        :root {
+            --cream-beige: #fefae0;
+            --gold-sand: #d4a373;
+            --charcoal: #333;
+            --pure-white: #ffffff;
+            --light-cream: #fffdf5;
+            --teal-primary: #6F8F9A;
+            --teal-dark: #5A7A84;
+            --teal-darker: #4A656E;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--charcoal);
+            background-color: var(--light-cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2 {
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--charcoal);
+        }
+
+        /* NAV MENU */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            position: relative;
+            z-index: 2000;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+            z-index: 9999;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            animation: whatsappPulse 0.8s infinite;
+        }
+
+        @keyframes whatsappPulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--gold-sand);
+            color: var(--charcoal);
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(212, 163, 115, 0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--charcoal);
+            color: var(--gold-sand);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(51, 51, 51, 0.2);
+        }
+
+        .btn-small {
+            padding: 10px 24px;
+            font-size: 0.9rem;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Header Styles */
+        .main-header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: transparent;
+            transition: background 0.4s ease, box-shadow 0.4s ease;
+            padding: 12px 0;
+        }
+
+        .main-header .nav-container {
+            background: transparent;
+            transition: background 0.4s ease;
+        }
+
+        .main-header .nav-menu a,
+        .main-header .user-text,
+        .main-header .drop-btn {
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+
+        .main-header .nav-menu a:hover,
+        .main-header .drop-btn:hover {
+            color: var(--gold-sand) !important;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 120px;
+            width: auto;
+            object-fit: contain;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .logo img {
+                height: 45px;
+            }
+        }
+
+        .main-header.scrolled {
+            background: var(--teal-primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .main-header.scrolled .nav-container {
+            background: transparent;
+        }
+
+        .main-header.scrolled .nav-menu a,
+        .main-header.scrolled .user-text,
+        .main-header.scrolled .drop-btn {
+            color: #333;
+        }
+
+        .main-header.scrolled .nav-menu a:hover,
+        .main-header.scrolled .drop-btn:hover {
+            color: var(--gold-sand) !important;
+        }
+
+        .main-header.scrolled .logo img {
+            height: 48px;
+        }
+
+        .nav-container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            background: var(--teal-primary);
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold-sand);
+        }
+
+        /* BOOK BUTTON */
+        .book-btn {
+            background-color: var(--gold-sand);
+            color: var(--charcoal);
+            padding: 11px 26px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .book-btn:hover {
+            background-color: var(--charcoal);
+            color: var(--gold-sand);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .book-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* DROPDOWN STYLES - PACKAGES & USER */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .drop-btn {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .drop-btn i {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Dropdown Content - Common Style for both dropdowns */
+        .dropdown-content,
+        .dropdown-menu {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background: var(--teal-primary);
+            min-width: 220px;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            display: none;
+            overflow: hidden;
+            z-index: 9999;
+            animation: slideDown 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* User dropdown position right */
+        .dropdown-menu {
+            left: auto;
+            right: 0;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown-content a,
+        .dropdown-menu .dropdown-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 20px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+        }
+
+        .dropdown-content a:last-child,
+        .dropdown-menu .dropdown-link:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover,
+        .dropdown-menu .dropdown-link:hover {
+            background: var(--teal-dark);
+            padding-left: 25px;
+            color: var(--gold-sand);
+        }
+
+        .dropdown-content a i,
+        .dropdown-menu .dropdown-link i {
+            width: 20px;
+            text-align: center;
+            color: var(--gold-sand);
+        }
+
+        /* USER DROPDOWN */
+        .user-dropdown {
+            position: relative;
+        }
+
+        .user-btn {
+            background: transparent;
+            color: #fff;
+            border: none;
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .user-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.1);
+            color: var(--gold-sand);
+        }
+
+        .user-btn i {
+            font-size: 22px;
+        }
+
+        /* Logout/Login Button - Matching dropdown style */
+        .logout-btn {
+            width: 100%;
+            padding: 14px 20px;
+            border: none;
+            background: var(--gold-sand);
+            color: var(--charcoal);
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Montserrat', sans-serif;
+            border: none;
+        }
+
+        .logout-btn i {
+            width: 20px;
+            text-align: center;
+            color: var(--charcoal);
+            transition: color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: var(--charcoal);
+            color: var(--gold-sand);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .logout-btn:hover i {
+            color: var(--gold-sand);
+        }
+
+        .logout-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--teal-primary);
+            color: black;
+            padding: 70px 0 30px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--gold-sand);
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer-column h3:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-column p {
+            color: black;
+            margin-bottom: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .footer-links ul li a {
+            color: black;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+            transform-origin: left center;
+            padding: 2px 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--gold-sand);
+            transform: translateX(10px) scale(1.05);
+            text-shadow: 0 0 10px rgba(212, 163, 115, 0.3);
+        }
+
+        .services-list {
+            margin-top: 15px;
+        }
+
+        .service-item {
+            color: black;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 3px 0;
+            cursor: pointer;
+            transform-origin: left center;
+        }
+
+        .service-item:hover {
+            color: var(--gold-sand);
+            transform: translateX(10px) scale(1.05);
+            text-shadow: 0 0 8px rgba(212, 163, 115, 0.2);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: black;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center;
+        }
+
+        .social-links a:hover {
+            background-color: var(--gold-sand);
+            color: var(--charcoal);
+            transform: translateY(-5px) scale(1.15);
+            box-shadow: 0 5px 15px rgba(212, 163, 115, 0.3);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: black;
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .copyright:hover {
+            letter-spacing: 0.5px;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--gold-sand);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .nav-menu {
+                gap: 20px;
+            }
+            
+            .footer-links ul li a:hover {
+                transform: translateX(8px) scale(1.03);
+            }
+            
+            .service-item:hover {
+                transform: translateX(8px) scale(1.03);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background: var(--teal-primary);
+                width: 280px;
+                height: calc(100vh - 80px);
+                padding: 40px 20px;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-dropdown {
+                width: 100%;
+            }
+
+            .dropdown-content,
+            .dropdown-menu {
+                position: static;
+                margin-top: 10px;
+                box-shadow: none;
+                animation: none;
+                width: 100%;
+            }
+
+            .user-dropdown {
+                width: 100%;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-links ul li a {
+                transform-origin: center;
+            }
+
+            .footer-links ul li a:hover {
+                transform: translateX(0) scale(1.05);
+            }
+
+            .service-item {
+                transform-origin: center;
+            }
+
+            .service-item:hover {
+                transform: translateX(0) scale(1.05);
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .services-list {
+                max-width: 300px;
+                margin: 0 auto;
+                margin-top: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo img {
+                height: 40px;
+            }
+            
+            .footer-links ul li a:hover {
+                transform: translateX(5px) scale(1.03);
+            }
+            
+            .service-item:hover {
+                transform: translateX(5px) scale(1.03);
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* User Section */
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .welcome-message {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+            transition: color 0.3s ease;
+        }
+
+        .main-header.scrolled .welcome-message {
+            color: #333;
+        }
+
+        /* Remove hover display for dropdowns - using click instead */
+        .nav-dropdown:hover .dropdown-content,
+        .user-dropdown:hover .dropdown-menu {
+            display: none;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <header class="main-header">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="images/logo_2.png" alt="Dream Decor Logo" />
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="nav-menu" id="navMenu">
+                    <a href="Home.aspx">Home</a>
+
+                    <!-- SERVICES LINK - Now properly linked -->
+                    <a href="Services.aspx">Services</a>
+
+                    <!-- PACKAGES DROPDOWN -->
+                    <div class="nav-dropdown">
+                        <a href="javascript:void(0);" class="drop-btn" onclick="togglePackagesDropdown(event)">Packages <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content" id="packagesDropdown">
+                            <a href="brithday.aspx"><i class="fas fa-birthday-cake"></i> Birthday Decoration</a>
+                            <a href="anniversary.aspx"><i class="fas fa-heart"></i> Anniversary Decoration</a>
+                            <a href="babyshower.aspx"><i class="fas fa-baby"></i> Baby Shower</a>
+                            <a href="engagement.aspx"><i class="fas fa-ring"></i> Engagement</a>
+                        </div>
+                    </div>
+
+                    <a href="Gallery.aspx">Gallery</a>
+                    <a href="About.aspx">About</a>
+                    <a href="Contact.aspx">Contact</a>
+
+                    <!-- Book Event -->
+                    <a href="Contact.aspx" class="book-btn">Book Your Event</a>
+
+                    <!-- User Section -->
+                    <div class="user-section">
+                        <asp:Label ID="lblWelcomeMessage" runat="server" CssClass="welcome-message" Text="Welcome, Guest"></asp:Label>
+
+                        <!-- User Icon Dropdown -->
+                        <div class="user-dropdown">
+                            <button type="button" class="user-btn" onclick="toggleUserDropdown(event)">
+                                <i class="fas fa-user-circle"></i>
+                            </button>
+
+                            <div class="dropdown-menu" id="userDropdown">
+                                <div class="dropdown-links">
+                                    <a href="MyAccount.aspx" class="dropdown-link">
+                                        <i class="fas fa-user"></i> My Account
+                                    </a>
+                                    <a href="MyBookings.aspx" class="dropdown-link">
+                                        <i class="fas fa-calendar-check"></i> My Bookings
+                                    </a>
+
+                                    <!-- Login/Logout Button -->
+                                    <asp:Button ID="btnLoginLogout" runat="server" 
+                                        Text="Login" 
+                                        CssClass="logout-btn"
+                                        OnClick="btnLoginLogout_Click" 
+                                        UseSubmitBehavior="false" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <!-- Page specific content will go here -->
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <!-- FOOTER SECTION -->
+        <footer id="contact">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-column">
+                        <h3>Dream Decor</h3>
+                        <p>Creating magical moments through exquisite event decoration. We specialize in transforming spaces into unforgettable experiences for all your celebrations.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <div class="footer-links">
+                            <ul>
+                                <li><a href="Home.aspx">Home</a></li>
+                                <li><a href="Services.aspx">Services</a></li>
+                                <li><a href="Packages.aspx">Packages</a></li>
+                                <li><a href="Gallery.aspx">Gallery</a></li>
+                                <li><a href="Contact.aspx">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Our Services</h3>
+                        <div class="services-list">
+                            <div class="service-item" onclick="window.location='Birthday.aspx'"><i class="fas fa-birthday-cake" style="margin-right: 8px;"></i> Birthday Party Decor</div>
+                            <div class="service-item" onclick="window.location='Services.aspx'"><i class="fas fa-heart" style="margin-right: 8px;"></i> Engagement Decoration</div>
+                            <div class="service-item" onclick="window.location='Anniversary.aspx'"><i class="fas fa-heart" style="margin-right: 8px;"></i> Anniversary Setup</div>
+                            <div class="service-item" onclick="window.location='BabyShower.aspx'"><i class="fas fa-baby" style="margin-right: 8px;"></i> Baby Shower Decor</div>
+                           
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Contact Info</h3>
+                        <div class="footer-links">
+                            <ul>
+                                <li><a href="https://maps.google.com" target="_blank"><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 123 Elegance Street</a></li>
+                                <li><a href="tel:1234567890"><i class="fas fa-phone" style="margin-right: 10px;"></i> (123) 456-7890</a></li>
+                                <li><a href="mailto:info@dreamdecor.com"><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@dreamdecor.com</a></li>
+                                <li><i class="fas fa-clock" style="margin-right: 10px;"></i> Mon-Fri: 9am-6pm</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2023 Dream Decor. All rights reserved. | Premium Event Decoration Services</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- WhatsApp Floating Button -->
+        <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <!-- JAVASCRIPT -->
+        <script>
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                        ? '<i class="fas fa-times"></i>' 
+                        : '<i class="fas fa-bars"></i>';
+                });
+
+                // Close mobile menu when clicking on a link
+                const navLinks = document.querySelectorAll('.nav-menu a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (window.innerWidth <= 768) {
+                            navMenu.classList.remove('active');
+                            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
+                    });
+            });
+            }
+
+            // Header scroll effect
+            window.addEventListener("scroll", function() {
+                const header = document.querySelector(".main-header");
+                if (header) {
+                    if (window.scrollY > 80) {
+                        header.classList.add("scrolled");
+                    } else {
+                        header.classList.remove("scrolled");
+                    }
+                }
+            });
+
+            // Close all dropdowns function
+            function closeAllDropdowns() {
+                const packagesDropdown = document.getElementById('packagesDropdown');
+                const userDropdown = document.getElementById('userDropdown');
+                
+                if (packagesDropdown) packagesDropdown.style.display = 'none';
+                if (userDropdown) userDropdown.style.display = 'none';
+            }
+
+            // Toggle Packages Dropdown
+            function togglePackagesDropdown(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                const dropdown = document.getElementById('packagesDropdown');
+                const isVisible = dropdown.style.display === 'block';
+                
+                // Close all dropdowns first
+                closeAllDropdowns();
+                
+                // Toggle current dropdown
+                dropdown.style.display = isVisible ? 'none' : 'block';
+            }
+
+            // Toggle User Dropdown
+            function toggleUserDropdown(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                const dropdown = document.getElementById('userDropdown');
+                const isVisible = dropdown.style.display === 'block';
+                
+                // Close all dropdowns first
+                closeAllDropdowns();
+                
+                // Toggle current dropdown
+                dropdown.style.display = isVisible ? 'none' : 'block';
+            }
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(event) {
+                const packagesBtn = document.querySelector('.nav-dropdown .drop-btn');
+                const userBtn = document.querySelector('.user-btn');
+                const packagesDropdown = document.getElementById('packagesDropdown');
+                const userDropdown = document.getElementById('userDropdown');
+                
+                if (packagesBtn && !packagesBtn.contains(event.target) && packagesDropdown) {
+                    packagesDropdown.style.display = 'none';
+                }
+                
+                if (userBtn && !userBtn.contains(event.target) && userDropdown) {
+                    userDropdown.style.display = 'none';
+                }
+            });
+
+            // Prevent default on dropdown buttons
+            document.querySelectorAll('.drop-btn, .user-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                });
+            });
+        </script>
+    </form>
+</body>
+</html>

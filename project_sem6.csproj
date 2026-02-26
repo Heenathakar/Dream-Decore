@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9FF3D522-0EFE-44DD-8D69-D72CFD3BCE33}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>b</RootNamespace>
+    <AssemblyName>b</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="anniversary.aspx" />
+    <Content Include="App_Data\MyDatabase.mdf" />
+    <Content Include="App_Data\MyDatabase_log.ldf">
+      <DependentUpon>MyDatabase.mdf</DependentUpon>
+    </Content>
+    <Content Include="babyshower.aspx" />
+    <Content Include="brithday.aspx" />
+    <Content Include="Contact.aspx" />
+    <Content Include="engagement.aspx" />
+    <Content Include="Gallery.aspx" />
+    <Content Include="Home.aspx" />
+    <Content Include="images\ann banner.jpg" />
+    <Content Include="images\anniversary\25th.1.jpg" />
+    <Content Include="images\anniversary\25th.10.jpg" />
+    <Content Include="images\anniversary\25th.11.jpg" />
+    <Content Include="images\anniversary\25th.12.jpg" />
+    <Content Include="images\anniversary\25th.2.jpg" />
+    <Content Include="images\anniversary\25th.3.jpg" />
+    <Content Include="images\anniversary\25th.4.jpg" />
+    <Content Include="images\anniversary\25th.5.jpg" />
+    <Content Include="images\anniversary\25th.6.jpg" />
+    <Content Include="images\anniversary\25th.7.jpg" />
+    <Content Include="images\anniversary\25th.8.jpg" />
+    <Content Include="images\anniversary\25th.9.jpg" />
+    <Content Include="images\anniversary\25th.jpg" />
+    <Content Include="images\anniversary\anniversary.jpg" />
+    <Content Include="images\anniversary\baloon.1.jpg" />
+    <Content Include="images\anniversary\baloon.10.jfif" />
+    <Content Include="images\anniversary\baloon.10.jpg" />
+    <Content Include="images\anniversary\baloon.11.jpg" />
+    <Content Include="images\anniversary\baloon.12.jpeg" />
+    <Content Include="images\anniversary\baloon.13.jpg" />
+    <Content Include="images\anniversary\baloon.2.jpg" />
+    <Content Include="images\anniversary\baloon.3.jpg" />
+    <Content Include="images\anniversary\baloon.4.jpg" />
+    <Content Include="images\anniversary\baloon.5.jpg" />
+    <Content Include="images\anniversary\baloon.6.jpg" />
+    <Content Include="images\anniversary\baloon.7.jpg" />
+    <Content Include="images\anniversary\baloon.8.jpg" />
+    <Content Include="images\anniversary\baloon.9.jpg" />
+    <Content Include="images\anniversary\bloontheam.jpg" />
+    <Content Include="images\anniversary\flowertheam.jpg" />
+    <Content Include="images\anniversary\goldentheam.jpg" />
+    <Content Include="images\anniversary\indeantheam.jpg" />
+    <Content Include="images\anniversary\luxury.1.jpg" />
+    <Content Include="images\anniversary\luxury.10.jpg" />
+    <Content Include="images\anniversary\luxury.11.jpg" />
+    <Content Include="images\anniversary\luxury.12.jpg" />
+    <Content Include="images\anniversary\luxury.2.jpg" />
+    <Content Include="images\anniversary\luxury.3.jpg" />
+    <Content Include="images\anniversary\luxury.4.jpg" />
+    <Content Include="images\anniversary\luxury.5.jpg" />
+    <Content Include="images\anniversary\luxury.6.jpg" />
+    <Content Include="images\anniversary\luxury.7.jpg" />
+    <Content Include="images\anniversary\luxury.8.jpg" />
+    <Content Include="images\anniversary\luxury.9.jpg" />
+    <Content Include="images\anniversary\wishestheam.jpg" />
+    <Content Include="images\babyshower\baloon.1.jpg" />
+    <Content Include="images\babyshower\baloon.10.jpg" />
+    <Content Include="images\babyshower\baloon.11.jpg" />
+    <Content Include="images\babyshower\baloon.12.jpg" />
+    <Content Include="images\babyshower\baloon.13.jpg" />
+    <Content Include="images\babyshower\baloon.14.jpg" />
+    <Content Include="images\babyshower\baloon.2.jpg" />
+    <Content Include="images\babyshower\baloon.3.jpg" />
+    <Content Include="images\babyshower\baloon.4.jpg" />
+    <Content Include="images\babyshower\baloon.5.jpg" />
+    <Content Include="images\babyshower\baloon.6.jpg" />
+    <Content Include="images\babyshower\baloon.7.jpg" />
+    <Content Include="images\babyshower\baloon.8.jpg" />
+    <Content Include="images\babyshower\baloon.9.jpg" />
+    <Content Include="images\babyshower\baloontheam.jpg" />
+    <Content Include="images\babyshower\bluetheam.jpg" />
+    <Content Include="images\babyshower\flowertheam.jpg" />
+    <Content Include="images\babyshower\gender.1.jpg" />
+    <Content Include="images\babyshower\gender.10.jpg" />
+    <Content Include="images\babyshower\gender.11.jpg" />
+    <Content Include="images\babyshower\gender.12.jpg" />
+    <Content Include="images\babyshower\gender.2.jpg" />
+    <Content Include="images\babyshower\gender.3.jpg" />
+    <Content Include="images\babyshower\gender.4.jpg" />
+    <Content Include="images\babyshower\gender.5.jpg" />
+    <Content Include="images\babyshower\gender.6.jpg" />
+    <Content Include="images\babyshower\gender.7.jpg" />
+    <Content Include="images\babyshower\gender.8.jpg" />
+    <Content Include="images\babyshower\gender.9.jpg" />
+    <Content Include="images\babyshower\kanha.1.jpg" />
+    <Content Include="images\babyshower\kanha.10.jpg" />
+    <Content Include="images\babyshower\kanha.11.jpg" />
+    <Content Include="images\babyshower\kanha.12.jpg" />
+    <Content Include="images\babyshower\kanha.2.jpg" />
+    <Content Include="images\babyshower\kanha.3.jpg" />
+    <Content Include="images\babyshower\kanha.4.jpg" />
+    <Content Include="images\babyshower\kanha.5.jpg" />
+    <Content Include="images\babyshower\kanha.6.jpg" />
+    <Content Include="images\babyshower\kanha.7.jpg" />
+    <Content Include="images\babyshower\kanha.8.jpg" />
+    <Content Include="images\babyshower\kanha.9.jpg" />
+    <Content Include="images\babyshower\kanhatheam.jpg" />
+    <Content Include="images\babyshower\pinktheam.jpg" />
+    <Content Include="images\babyshowr bnner.jpg" />
+    <Content Include="images\birthday\b1.jpg" />
+    <Content Include="images\birthday\b10.jpg" />
+    <Content Include="images\birthday\b11.jpg" />
+    <Content Include="images\birthday\b12.jpg" />
+    <Content Include="images\birthday\b22.jpg" />
+    <Content Include="images\birthday\b3.jpg" />
+    <Content Include="images\birthday\b4.jpg" />
+    <Content Include="images\birthday\b5.jpg" />
+    <Content Include="images\birthday\b6.jpg" />
+    <Content Include="images\birthday\b7.jpg" />
+    <Content Include="images\birthday\b8.jpg" />
+    <Content Include="images\birthday\b9.jpg" />
+    <Content Include="images\birthday\car1.jpg" />
+    <Content Include="images\birthday\car10.jpg" />
+    <Content Include="images\birthday\car11.jpg" />
+    <Content Include="images\birthday\car12.jpg" />
+    <Content Include="images\birthday\car2.jpg" />
+    <Content Include="images\birthday\car3.jpg" />
+    <Content Include="images\birthday\car4.jpg" />
+    <Content Include="images\birthday\car5.jpg" />
+    <Content Include="images\birthday\car6.jpg" />
+    <Content Include="images\birthday\car7.jpg" />
+    <Content Include="images\birthday\car8.jpg" />
+    <Content Include="images\birthday\car9.jpg" />
+    <Content Include="images\birthday\k1.jpg" />
+    <Content Include="images\birthday\k10.jpg" />
+    <Content Include="images\birthday\k11.jpg" />
+    <Content Include="images\birthday\k12.jpg" />
+    <Content Include="images\birthday\k2.jpg" />
+    <Content Include="images\birthday\k3.jpg" />
+    <Content Include="images\birthday\k4.jpg" />
+    <Content Include="images\birthday\k5.jpg" />
+    <Content Include="images\birthday\k6.jpg" />
+    <Content Include="images\birthday\k7.jpg" />
+    <Content Include="images\birthday\k8.jpg" />
+    <Content Include="images\birthday\k9.jpg" />
+    <Content Include="images\brithday bnner.jpg" />
+    <Content Include="images\eng banner.jpg" />
+    <Content Include="images\engagement\floral.1.jpg" />
+    <Content Include="images\engagement\floral.10.jpg" />
+    <Content Include="images\engagement\floral.11.jpg" />
+    <Content Include="images\engagement\floral.12.jpg" />
+    <Content Include="images\engagement\floral.2.jpg" />
+    <Content Include="images\engagement\floral.3.jpg" />
+    <Content Include="images\engagement\floral.4.jpg" />
+    <Content Include="images\engagement\floral.5.jpg" />
+    <Content Include="images\engagement\floral.6.jpg" />
+    <Content Include="images\engagement\floral.7.jpg" />
+    <Content Include="images\engagement\floral.8.jpg" />
+    <Content Include="images\engagement\floral.9.jpg" />
+    <Content Include="images\engagement\ring.1.jpg" />
+    <Content Include="images\engagement\ring.10.jpg" />
+    <Content Include="images\engagement\ring.11.jpg" />
+    <Content Include="images\engagement\ring.12.jpg" />
+    <Content Include="images\engagement\ring.2.jpg" />
+    <Content Include="images\engagement\ring.3.jpg" />
+    <Content Include="images\engagement\ring.4.jpg" />
+    <Content Include="images\engagement\ring.5.jpg" />
+    <Content Include="images\engagement\ring.6.jpg" />
+    <Content Include="images\engagement\ring.7.jpg" />
+    <Content Include="images\engagement\ring.8.jpg" />
+    <Content Include="images\engagement\ring.9.jpg" />
+    <Content Include="images\engagement\royal.1.jpg" />
+    <Content Include="images\engagement\royal.10.jpg" />
+    <Content Include="images\engagement\royal.11.jpg" />
+    <Content Include="images\engagement\royal.12.jpg" />
+    <Content Include="images\engagement\royal.2.jpg" />
+    <Content Include="images\engagement\royal.3.jpg" />
+    <Content Include="images\engagement\royal.4.jpg" />
+    <Content Include="images\engagement\royal.5.jpg" />
+    <Content Include="images\engagement\royal.6.jpg" />
+    <Content Include="images\engagement\royal.7.jpg" />
+    <Content Include="images\engagement\royal.8.jpg" />
+    <Content Include="images\engagement\royal.9.jpg" />
+    <Content Include="images\logo_2.png" />
+    <Content Include="Login.aspx" />
+    <Content Include="Register.aspx" />
+    <Content Include="Services.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="anniversary.aspx.cs">
+      <DependentUpon>anniversary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="anniversary.aspx.designer.cs">
+      <DependentUpon>anniversary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="babyshower.aspx.cs">
+      <DependentUpon>babyshower.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="babyshower.aspx.designer.cs">
+      <DependentUpon>babyshower.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="brithday.aspx.cs">
+      <DependentUpon>brithday.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="brithday.aspx.designer.cs">
+      <DependentUpon>brithday.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="engagement.aspx.cs">
+      <DependentUpon>engagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="engagement.aspx.designer.cs">
+      <DependentUpon>engagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery.aspx.cs">
+      <DependentUpon>Gallery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Gallery.aspx.designer.cs">
+      <DependentUpon>Gallery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Services.aspx.cs">
+      <DependentUpon>Services.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Services.aspx.designer.cs">
+      <DependentUpon>Services.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site1.Master.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site1.Master.designer.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Site1.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8337/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
